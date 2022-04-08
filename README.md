@@ -54,3 +54,28 @@ print(test_result)
 sentence = "푸틴한테는 한마디도 못하는 역겨운 거지나라 합정공주년"
 print(detect.predict(sentence))
 ```
+
+## Performance & Evaluation
+- 악성 댓글 탐지 모델 평가 비교
+|        |Bert-base-multilingual|kyKim/Bert-kor|
+|--------|----------------------|--------------|
+|Accuracy|0.73|  |
+|F1-Score|0.80|  |
+|Recall  |0.79|  |
+|Precision|0.80|  |
+
+- 성차별/혐오 댓글 탐지 모델 평가 비교
+|        |Bert-base-multilingual|kyKim/Bert-kor|
+|--------|----------------------|--------------|
+|Accuracy|  |0.94|
+|F1-Score|  |0.75|
+|Recall  |  |0.66|
+|Precision|  |0.88|
+
+- 악성 댓글 탐지 with Bert-base-multilingual
+
+- 악성 댓글 탐지 with kyKim/Bert-kor
+
+- 성차별/혐오 댓글 탐지 with Bert-base-multilingual
+
+- 성차별/혐오 댓글 탐지 with kyKim/Bert-kor
