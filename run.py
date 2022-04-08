@@ -7,6 +7,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from sklearn.metrics import classification_report
 from sklearn.metrics import accuracy_score, f1_score
+import matplotlib.pyplot as plt
 
 from preprocess import Preprocess_with_bert
 
@@ -61,7 +62,7 @@ class Detect_hate_comments:
         self.optimizer = tf.keras.optimizers.Adam(3e-5)
         self.loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
         self.metric = tf.keras.metrics.SparseCategoricalAccuracy('accuracy')
-        self.checkpoint_path = os.path.join(f'./{self.target}/{self.model_name}/cp.ckpt')
+        self.checkpoint_path = os.path.join(f'{self.target}/{self.model_name}/cp.ckpt')
         self.checkpoint_dir = os.path.dirname(self.checkpoint_path)
         self.cp_callback = ModelCheckpoint(self.checkpoint_path, 
                                            monitor='val_accuracy', 
@@ -74,7 +75,7 @@ class Detect_hate_comments:
         except:
             pass
         
-    def train_model(self, epochs, batch_size):
+    def train_model(self, epochs=NUM_EPOCHS, batch_size=BATCH_SIZE):
         self.model.compile(optimizer=self.optimizer,
                            loss=self.loss,
                            metrics=[self.metric])
@@ -84,14 +85,14 @@ class Detect_hate_comments:
 
         self.history = self.model.fit(self.Train_inputs, 
                                       self.Train_labels,
-                                      epochs=NUM_EPOCHS, 
-                                      batch_size=BATCH_SIZE, 
+                                      epochs=epochs, 
+                                      batch_size=batch_size, 
                                       validation_data = (self.Val_inputs, self.Val_labels),
                                       callbacks=[self.cp_callback])
         self.model.load_weights(self.checkpoint_path)
         
-    def test_model(self, batch_size):
-        pred = self.model.predict(self.Test_inputs, batch_size=BATCH_SIZE)
+    def test_model(self, batch_size=BATCH_SIZE):
+        pred = self.model.predict(self.Test_inputs, batch_size=batch_size)
         pred_label = np.argmax(pred, axis=1)
         result_df = self.bert_tokens.Test
         result_df[f'{self.target}_prediction'] = pred_label
@@ -104,20 +105,20 @@ class Detect_hate_comments:
         pred_label = np.argmax(pred, axis=1)
         return pred_label
         
-    def plot_history(self, model_hist):
+    def plot_history(self):
         plt.figure(figsize=(10, 5))
 
         plt.subplot(121)
-        plt.plot(model_hist.history['loss'], 'b', label='train')
-        plt.plot(model_hist.history['val_loss'], 'r', label='val')
+        plt.plot(self.history.history['loss'], 'b', label='train')
+        plt.plot(self.history.history['val_loss'], 'r', label='val')
         plt.title('Loss')
         plt.xlabel('epochs')
         plt.ylabel('loss')
         plt.legend(loc='upper left')
 
         plt.subplot(122)
-        plt.plot(model_hist.history['accuracy'], 'b', label='train')
-        plt.plot(model_hist.history['val_accuracy'], 'r', label='val')
+        plt.plot(self.history.history['accuracy'], 'b', label='train')
+        plt.plot(self.history.history['val_accuracy'], 'r', label='val')
         plt.title('Accuracy')
         plt.xlabel('epochs')
         plt.ylabel('accuracy')
@@ -154,7 +155,7 @@ if __name__ == '__main__':
             print("WRONG NUMBER!")
     detect = Detect_hate_comments(target=target, model_name=model_name, dir_path=dir_path)
     sentence = input("ENTER YOUR SENTENCE : ")
-    result = detect.model.predict(sentence)
+    result = detect.predict(sentence)
     if result == 1:
         print("Umm...It can hurt others!")
     else:
