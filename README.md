@@ -1,5 +1,8 @@
 # Bert-hate-comment-detector
 - Bert기반 악성 댓글, 성차별/혐오 댓글 탐지 모델
+> 소셜미디어, 온라인 상 활동 중 악성 댓글 혹은 메세지는 큰 사회적 문제입니다.
+> 이러한 악성 댓글을 정확하게 찾아내기 위해서는 문맥을 파악할 수 있어야합니다.
+> Transformer 기반의 pre-trained Bert 모델을 사용하여 [Korean-hate-speech](https://github.com/kocohub/korean-hate-speech)데이터를 text-classification학습시킵니다.
 
 ## DEMO
 - Environment setting
