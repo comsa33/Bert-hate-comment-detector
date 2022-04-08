@@ -60,10 +60,10 @@ print(detect.predict(sentence))
 
 |        |Bert-base-multilingual|kyKim/Bert-kor|
 |--------|----------------------|--------------|
-|Accuracy|0.73|  |
-|F1-Score|0.80|  |
-|Recall  |0.79|  |
-|Precision|0.80|  |
+|Accuracy|0.73|0.78|
+|F1-Score|0.80|0.82|
+|Recall  |0.79|0.75|
+|Precision|0.80|0.90|
 
 - 성차별/혐오 댓글 탐지 모델 평가 비교
 
