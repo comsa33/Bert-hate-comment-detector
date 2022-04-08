@@ -62,7 +62,7 @@ class Detect_hate_comments:
         self.optimizer = tf.keras.optimizers.Adam(3e-5)
         self.loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
         self.metric = tf.keras.metrics.SparseCategoricalAccuracy('accuracy')
-        self.checkpoint_path = os.path.join(f'{self.target}/{self.model_name}/cp.ckpt')
+        self.checkpoint_path = os.path.join(f'{self.target}/{self.model_name.replce('/','-')}/cp.ckpt')
         self.checkpoint_dir = os.path.dirname(self.checkpoint_path)
         self.cp_callback = ModelCheckpoint(self.checkpoint_path, 
                                            monitor='val_accuracy', 
@@ -90,6 +90,14 @@ class Detect_hate_comments:
                                       validation_data = (self.Val_inputs, self.Val_labels),
                                       callbacks=[self.cp_callback])
         self.model.load_weights(self.checkpoint_path)
+    
+    def evaluation(self, batch_size=BATCH_SIZE):
+        preds = self.model.predict(self.Val_inputs, batch_size=batch_size)
+        pred_labels = np.argmax(preds, axis=1)
+        val_acc = accuracy_score(self.Val_labels, pred_labels)
+        val_f1 = f1_score(self.Val_labels, pred_labels)
+        cls_report = classification_report(self.Val_labels, pred_labels)
+        return val_acc, val_f1, cls_report
         
     def test_model(self, batch_size=BATCH_SIZE):
         pred = self.model.predict(self.Test_inputs, batch_size=batch_size)
