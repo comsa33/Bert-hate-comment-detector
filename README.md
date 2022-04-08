@@ -18,6 +18,8 @@ python run.py
 from preprocess import Preprocess_with_bert
 from run import Detect_hate_comments
 
+# hate => 악성댓글 탐지
+# contain_gender_bias => 성혐오/차별 표현 탐지
 target = ['hate', 'contain_gender_bias']
 model_name = ['bert-base-multilingual-cased', 'kykim/bert-kor-base']
 dir_path = ['bert-ckpt', 'kor-bert-ckpt']
