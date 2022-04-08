@@ -76,12 +76,16 @@ print(detect.predict(sentence))
 
 - 악성 댓글 탐지 with Bert-base-multilingual
 
+![download](https://user-images.githubusercontent.com/61719257/162421710-f7fa71bc-6c31-4727-aa0a-78040f82425b.png)
 
 - 악성 댓글 탐지 with kyKim/Bert-kor
 
+![download-1](https://user-images.githubusercontent.com/61719257/162421722-f6f18fba-fc7b-411d-8ec0-cfe5f59367d4.png)
 
 - 성차별/혐오 댓글 탐지 with Bert-base-multilingual
 
+![download-2](https://user-images.githubusercontent.com/61719257/162421727-80cc9604-f0b4-4f30-8328-c05deef1f38a.png)
 
 - 성차별/혐오 댓글 탐지 with kyKim/Bert-kor
 
+![download-3](https://user-images.githubusercontent.com/61719257/162421743-d866a93d-99f5-4061-b354-2741a3898768.png)
