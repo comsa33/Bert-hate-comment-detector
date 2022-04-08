@@ -168,3 +168,4 @@ if __name__ == '__main__':
         print("Umm...It can hurt others!")
     else:
         print("It seems fine!")
+        
