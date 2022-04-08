@@ -69,10 +69,10 @@ print(detect.predict(sentence))
 
 |        |Bert-base-multilingual|kyKim/Bert-kor|
 |--------|----------------------|--------------|
-|Accuracy|  |0.94|
-|F1-Score|  |0.75|
-|Recall  |  |0.66|
-|Precision|  |0.88|
+|Accuracy|0.92|0.94|
+|F1-Score|0.69|0.75|
+|Recall  |0.61|0.66|
+|Precision|0.80|0.88|
 
 - 악성 댓글 탐지 with Bert-base-multilingual
 
