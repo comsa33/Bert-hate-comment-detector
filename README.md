@@ -56,6 +56,14 @@ print(detect.predict(sentence))
 ```
 
 ## Performance & Evaluation
+
+> 악성 댓글 탐지 모델의 경우 `bert-base-multilingual` 보다 `kyKim/bert-kor` 가 평가 점수는 전반적으로 높았지만,
+> 실제 훈련되지 않은 문장들로 테스트를 해보았을 경우, `bert-base-multilingual` 모델이 좀 더 정확하게 판별하는 것으로 보인다.
+
+> 성차별/혐오 댓글 탐지 모델의 경우는 미세한 차이로 `kyKim/bert-kor` 모델이 더 나은 평가 점수를 보였고,
+> 실제 훈련되지 않은 문장들에 대해서도 더 나은 탐지 결과를 보여주었다.
+
+
 - 악성 댓글 탐지 모델 평가 비교
 
 |        |Bert-base-multilingual|kyKim/Bert-kor|
