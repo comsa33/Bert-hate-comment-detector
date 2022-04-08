@@ -137,3 +137,7 @@ print(detect_gender.predict(sentence2_))
 ```
 
 ![download-3](https://user-images.githubusercontent.com/61719257/162421743-d866a93d-99f5-4061-b354-2741a3898768.png)
+
+### reference
+- [hugginface TFBertModel](https://huggingface.co/docs/transformers/model_doc/bert#transformers.TFBertModel)
+- [kocohub korean-hate-speech dataset](https://github.com/kocohub/korean-hate-speech)
