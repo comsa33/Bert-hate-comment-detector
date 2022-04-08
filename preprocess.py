@@ -87,7 +87,7 @@ class Preprocess_with_bert:
         token_type_ids = []
 
         if mode == 'train':
-            data = zip(df['texts'], df['hate'])
+            data = zip(df['texts'], df[self.target])
             labels = []
             for sentence, label in tqdm(data, total=len(df)):
                 try:
