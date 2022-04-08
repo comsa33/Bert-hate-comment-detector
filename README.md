@@ -57,6 +57,7 @@ print(detect.predict(sentence))
 
 ## Performance & Evaluation
 - 악성 댓글 탐지 모델 평가 비교
+
 |        |Bert-base-multilingual|kyKim/Bert-kor|
 |--------|----------------------|--------------|
 |Accuracy|0.73|  |
@@ -65,6 +66,7 @@ print(detect.predict(sentence))
 |Precision|0.80|  |
 
 - 성차별/혐오 댓글 탐지 모델 평가 비교
+
 |        |Bert-base-multilingual|kyKim/Bert-kor|
 |--------|----------------------|--------------|
 |Accuracy|  |0.94|
@@ -74,8 +76,12 @@ print(detect.predict(sentence))
 
 - 악성 댓글 탐지 with Bert-base-multilingual
 
+
 - 악성 댓글 탐지 with kyKim/Bert-kor
+
 
 - 성차별/혐오 댓글 탐지 with Bert-base-multilingual
 
+
 - 성차별/혐오 댓글 탐지 with kyKim/Bert-kor
+
